@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -63,31 +63,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-//////image intent
-//
-//    private File imageFile;
-//
-//    public void process(View view){
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        imageFile = new File(Environment.
-//                getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"test.jpg");
-//        Uri tempuri = Uri.fromFile(imageFile);
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, tempuri);
-//        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-//        startActivityForResult(intent, 0);
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//       //TODO Auto-generated method stub
-//        if(requestCode==0)
-//        {
-//            switch (resultCode){
-//                case Activity.RESULT_OK:
-//            }
-//        }
-//
-//    }
 
 }

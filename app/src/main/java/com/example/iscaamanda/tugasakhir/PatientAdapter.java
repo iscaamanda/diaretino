@@ -40,6 +40,8 @@ class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
         holder.addBirthday.setText(patients.get(position).getAddBirthday());
         holder.eyePosition.setText(patients.get(position).getEyePosition());
         holder.addDate.setText(patients.get(position).getAddDate());
+        holder.imageLabel.setText(patients.get(position).getImageLabel());
+        holder.imageConfidence.setText(patients.get(position).getImageConfidence());
 
 
 
@@ -55,6 +57,8 @@ class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
                 intent.putExtra("add_date",patients.get(position).getAddDate());
                 intent.putExtra("eye_position",patients.get(position).getEyePosition());
                 intent.putExtra("image_loc",patients.get(position).getImageLoc());
+                intent.putExtra("image_label",patients.get(position).getImageLabel());
+                intent.putExtra("image_confidence",patients.get(position).getImageConfidence());
                 mContext.startActivity(intent);
             }
         });
@@ -74,6 +78,8 @@ class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
         public TextView addBirthday;
         public TextView addDate;
         public TextView eyePosition;
+        public TextView imageLabel;
+        public TextView imageConfidence;
 
 
         public ViewHolder(View itemView) {
@@ -84,7 +90,10 @@ class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
             addBirthday = itemView.findViewById(R.id.add_birthday);
             addDate = itemView.findViewById(R.id.add_date);
             eyePosition = itemView.findViewById(R.id.eye_position);
+            imageLabel = itemView.findViewById(R.id.image_label);
+            imageConfidence = itemView.findViewById(R.id.image_confidence);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+
         }
     }
 }

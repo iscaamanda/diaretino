@@ -30,9 +30,10 @@ public class GalleryActivity extends AppCompatActivity {
                 && getIntent().hasExtra("add_birthday")
                 && getIntent().hasExtra("add_date")
                 && getIntent().hasExtra("eye_position")
-                && getIntent().hasExtra("image_loc")){
+                && getIntent().hasExtra("image_loc")
+                && getIntent().hasExtra("image_label")
+                && getIntent().hasExtra("image_confidence")){
             Log.d(TAG, "getIncomingIntent: found intent extras.");
-
              String firstName = getIntent().getStringExtra("first_name");
              String lastName = getIntent().getStringExtra("last_name");
              String patientId = getIntent().getStringExtra("patient_id");
@@ -40,15 +41,19 @@ public class GalleryActivity extends AppCompatActivity {
              String addDate = getIntent().getStringExtra("add_date");
              String eyePosition = getIntent().getStringExtra("eye_position");
              String imageLoc = getIntent().getStringExtra("image_loc");
+             String imageLabel = getIntent().getStringExtra("image_label");
+             String imageConfidence = getIntent().getStringExtra("image_confidence");
 
-             setData(firstName, lastName, patientId, addBirthday, addDate, eyePosition, imageLoc);
+             setData(firstName, lastName, patientId, addBirthday, addDate, eyePosition, imageLoc,
+                     imageLabel, imageConfidence);
 
         }
 
     }
 
     private void setData(String firstName, String lastName, String patientId,
-                         String addBirthday, String addDate, String eyePosition, String imageLoc){
+                         String addBirthday, String addDate, String eyePosition,
+                         String imageLoc, String imageLabel, String imageConfidence){
         Log.d(TAG, "setData: setting the data to widgets.");
 
         TextView mfirstName = findViewById(R.id.first_name);
@@ -57,6 +62,8 @@ public class GalleryActivity extends AppCompatActivity {
         TextView maddBirthday = findViewById(R.id.add_birthday);
         TextView maddDate = findViewById(R.id.add_date);
         TextView meyePosition = findViewById(R.id.eye_position);
+        TextView mimageLabel = findViewById(R.id.image_label);
+        TextView mimageConfidence = findViewById(R.id.image_confidence);
         ImageView mimageLoc = findViewById(R.id.image);
 
         Uri imgUri = Uri.parse(imageLoc);
@@ -67,8 +74,8 @@ public class GalleryActivity extends AppCompatActivity {
         maddDate.setText(addDate);
         meyePosition.setText(eyePosition);
         mimageLoc.setImageURI(imgUri);
-
-
+        mimageLabel.setText(imageLabel);
+        mimageConfidence.setText(imageConfidence);
     }
 
 }

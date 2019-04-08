@@ -7,7 +7,10 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class Patient {
 
-    public Patient(String firstName, String lastName, String patientId, String addBirthday, String addDate, String eyePosition, String imageLoc) {
+
+    public Patient(String firstName, String lastName, String patientId,
+                   String addBirthday, String addDate, String eyePosition,
+                   String imageLoc, String imageLabel, String imageConfidence) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patientId = patientId;
@@ -15,6 +18,8 @@ public class Patient {
         this.addDate = addDate;
         this.eyePosition = eyePosition;
         this.imageLoc = imageLoc;
+        this.imageLabel = imageLabel;
+        this.imageConfidence = imageConfidence;
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -40,6 +45,12 @@ public class Patient {
 
     @ColumnInfo(name = "imageLoc")
     private  String imageLoc;
+
+    @ColumnInfo(name = "imageLabel")
+    private String imageLabel;
+
+    @ColumnInfo(name = "imageConfidence")
+    private String imageConfidence;
 
 
     //GETTER AND SETTER
@@ -89,7 +100,6 @@ public class Patient {
 
     public void getEyePosition(String eyePosition) {   this.eyePosition = eyePosition; }
 
-
     public String getImageLoc() {
         return imageLoc;
     }
@@ -97,5 +107,16 @@ public class Patient {
     public void setImageLoc(String imageLoc) {
         this.imageLoc = imageLoc;
     }
+
+    public String getImageLabel() {  return imageLabel; }
+
+    public void setImageLabel(String imageLabel) {  this.imageLabel = imageLabel; }
+
+    public String getImageConfidence() {
+        return imageConfidence;
+    }
+
+    public void setImageConfidence(String imageConfidence) {  this.imageConfidence = imageConfidence; }
+
 }
 
