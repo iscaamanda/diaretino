@@ -6,8 +6,9 @@ buildscript {
         google()
         jcenter()
         maven {
-            url 'https://maven.google.com'
-            name 'Google'}
+//            url 'https://maven.google.com'
+//            name 'Google'
+            url "https://jitpack.io"}
         //mavenCentral()
     }
     dependencies {
@@ -24,8 +25,9 @@ allprojects {
         google()
         jcenter()
         maven {
-          url 'https://maven.google.com'
-          name 'Google'}
+//          url 'https://maven.google.com'
+//          name 'Google'
+            url "https://jitpack.io"}
     }
 
 }

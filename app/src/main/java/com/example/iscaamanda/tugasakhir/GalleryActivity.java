@@ -3,10 +3,14 @@ package com.example.iscaamanda.tugasakhir;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.github.chrisbanes.photoview.PhotoView;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -53,7 +57,7 @@ public class GalleryActivity extends AppCompatActivity {
 
     private void setData(String firstName, String lastName, String patientId,
                          String addBirthday, String addDate, String eyePosition,
-                         String imageLoc, String imageLabel, String imageConfidence){
+                         final String imageLoc, String imageLabel, String imageConfidence){
         Log.d(TAG, "setData: setting the data to widgets.");
 
         TextView mfirstName = findViewById(R.id.first_name);
@@ -66,7 +70,7 @@ public class GalleryActivity extends AppCompatActivity {
         TextView mimageConfidence = findViewById(R.id.image_confidence);
         ImageView mimageLoc = findViewById(R.id.image);
 
-        Uri imgUri = Uri.parse(imageLoc);
+        final Uri imgUri = Uri.parse(imageLoc);
         mfirstName.setText(firstName);
         mlastName.setText(lastName);
         mpatientId.setText(patientId);
@@ -76,6 +80,23 @@ public class GalleryActivity extends AppCompatActivity {
         mimageLoc.setImageURI(imgUri);
         mimageLabel.setText(imageLabel);
         mimageConfidence.setText(imageConfidence);
+
+        mimageLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(GalleryActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.action_image, null);
+                PhotoView photoView = mView.findViewById(R.id.imageView);
+                photoView.setImageURI(imgUri);
+                mBuilder.setView(mView);
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
     }
+
+
+
+
 
 }

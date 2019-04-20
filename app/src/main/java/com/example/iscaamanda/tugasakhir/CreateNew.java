@@ -157,10 +157,9 @@ public class CreateNew extends AppCompatActivity {
 
         // initialize array to hold top labels
         topLables = new String[RESULTS_TO_SHOW];
+
         // initialize array to hold top probabilities
         topConfidence = new String[RESULTS_TO_SHOW];
-
-
 
 
 
@@ -352,8 +351,6 @@ public class CreateNew extends AppCompatActivity {
         topLables[0] = labelList.get(1);
         topConfidence[0] = String.format("%.0f%%", labelProbArray[0][1] * 100);
         Log.d(TAG, "imageClassifier: "+ topLables[0] + " " + topConfidence[0]);
-        // display the results
-//        printTopKLabels();
     }
 
 
@@ -390,7 +387,7 @@ public class CreateNew extends AppCompatActivity {
         }
     }
 
-    // loads tflite grapg from file
+    // loads tflite graph from file
     private MappedByteBuffer loadModelFile() throws IOException {
         AssetFileDescriptor fileDescriptor = this.getAssets().openFd(classifier);
         FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
@@ -413,23 +410,5 @@ public class CreateNew extends AppCompatActivity {
         return labelList;
     }
 
-    // print the top labels and respective confidences
-    private void printTopKLabels() {
-        // add all results to priority queue
-        for (int i = 0; i < labelList.size(); ++i) {
-                sortedLabels.add(
-                        new AbstractMap.SimpleEntry<>(labelList.get(i), labelProbArray[0][i]));
-            if (sortedLabels.size() > RESULTS_TO_SHOW) {
-                sortedLabels.poll();
-            }
-        }
 
-        // get top results from priority queue
-        final int size = sortedLabels.size();
-        for (int i = 0; i < size; ++i) {
-            Map.Entry<String, Float> label = sortedLabels.poll();
-            //topLables[i] = label.getKey();
-            //topConfidence[i] = String.format("%.0f%%", label.getValue() * 100);
-        }
-    }
 }

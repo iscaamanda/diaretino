@@ -7,10 +7,16 @@
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This patientId address is invalid</string>
+    <string name="error_message_username">Isi Username Anda</string>
+    <string name="error_message_password">Isi Password Anda</string>
+    <string name="error_invalid_username_userpass">Username atau Password salah</string>
+    <string name="error_invalid_username">This username is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_field_required">Form tidak boleh kosong</string>
+    <string name="error_pinadmin">PIN salah</string>
+    <string name="success_message">Registrasi Berhasil</string>
+    <string name="error_username_exists">Username sudah terdaftar</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing patientId
         completions."
     </string>

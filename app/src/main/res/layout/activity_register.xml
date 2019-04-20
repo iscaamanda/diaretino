@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorText"
+    android:id="@+id/nestedScrollView"
+    tools:context=".AuthActivity">
+    <!-- Here you put the rest of your current view-->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_margin="20dp"
+            android:text="Daftar Sebagai Pengguna Baru"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_institusi"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:background="@drawable/radiustransp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_institusi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Institusi"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:background="@drawable/radiustransp"
+            android:id="@+id/layout_alamat">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat Institusi"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:background="@drawable/radiustransp"
+            android:id="@+id/layout_username">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:background="@drawable/radiustransp"
+            app:passwordToggleEnabled="true"
+            android:id="@+id/layout_userpass">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_userpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:background="@drawable/radiustransp"
+            app:passwordToggleEnabled="true"
+            android:id="@+id/layout_confirmpass">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_confirmpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Konfirmasi Password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:background="@drawable/radiustransp"
+            android:id="@+id/layout_pinadmin">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/input_pinadmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PIN"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorTextHint"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/button_regist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/radius"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Daftar"
+            android:textColor="@color/ic_launcher_background"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:padding="10dp"
+            android:id="@+id/link_login"
+            android:text="Sudah terdaftar? Masuk di sini"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
