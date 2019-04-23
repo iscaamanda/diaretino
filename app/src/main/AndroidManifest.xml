@@ -16,27 +16,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".AuthActivity"
+        <activity
+            android:name=".AuthActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="Diaretino"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CreateNew" />
         <activity android:name=".GalleryActivity" />
 
@@ -50,7 +46,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

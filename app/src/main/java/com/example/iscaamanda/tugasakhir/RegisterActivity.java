@@ -120,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 textInputLayoutPinAdmin, getString(R.string.error_pinadmin))){
             return;
         }
-        if (!databaseHelper.checkUser(textInputEditTextUserName.getText().toString().trim()))
+        if (!databaseHelper.checkUser(textInputEditTextUserName.getText().toString().trim(),textInputEditTextUserPass.getText().toString().trim()))
         {
             user.setUserName(textInputEditTextUserName.getText().toString().trim());
             user.setUserPass(textInputEditTextUserPass.getText().toString().trim());

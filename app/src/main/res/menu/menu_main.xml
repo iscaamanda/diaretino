@@ -5,12 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.iscaamanda.tugasakhir.MainActivity">
     <item
-        android:title="Search"
+        android:title="Cari ID"
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.support.v7.widget.SearchView"/>
-
     <item
         android:id="@+id/action_pengaturan"
         android:orderInCategory="101"
@@ -21,4 +20,9 @@
         android:orderInCategory="101"
         android:title="Tentang"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="101"
+        android:title="Keluar"
+        app:showAsAction="never"/>
 </menu>

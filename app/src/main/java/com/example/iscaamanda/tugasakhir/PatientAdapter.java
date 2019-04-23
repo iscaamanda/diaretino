@@ -1,29 +1,30 @@
 package com.example.iscaamanda.tugasakhir;
 
-
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.v4.content.ContextCompat.startActivity;
-
-class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
+class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> implements Filterable {
 
         List<Patient> patients;
+        List<Patient> patientsFull;
+
         private Context mContext;
 
 
         public PatientAdapter(List<Patient> patients, Context context) {
         this.patients = patients;
+        patientsFull = new ArrayList<>(patients);
+
         this.mContext = context;
         }
 
@@ -98,5 +99,39 @@ class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
         }
     }
 
+    @Override
+    public Filter getFilter() {
+        return patientsFilter;
+    }
+
+    private Filter patientsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Patient> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0 ){
+                filteredList.addAll(patientsFull);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Patient patient : patientsFull){
+                    if (patient.getPatientId().toLowerCase().contains(filterPattern)){
+                        filteredList.add(patient);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            patients.clear();
+            patients.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
 }

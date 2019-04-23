@@ -1,14 +1,9 @@
 package com.example.iscaamanda.tugasakhir;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
+
 import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,26 +13,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.SearchView;
-import android.widget.TextView;
-
-import java.io.File;
-import java.util.ArrayList;
+import android.support.v7.widget.SearchView;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private SearchView searchView;
 
 
     RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
+    PatientAdapter adapter;
     FloatingActionButton fab;
-    FloatingActionButton buttonLogout;
-
     private  Session session;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +39,6 @@ public class MainActivity extends AppCompatActivity {
         if(!session.loggedIn()){
             logout();
         }
-        buttonLogout = findViewById(R.id.button_logout);
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-
-            }
-        });
-
 
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -70,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         List<Patient> patients = db.patientDao().getAllPatients();
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PatientAdapter(patients,getApplicationContext());
         recyclerView.setAdapter(adapter);
@@ -95,16 +73,42 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
 
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-
-        return super.onCreateOptionsMenu(menu);
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_tentang:
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+        }
+        switch (item.getItemId()){
+            case R.id.action_pengaturan:
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+        }
+        switch (item.getItemId()){
+            case R.id.action_logout:
+                logout();
+        }
 
-
+        return super.onOptionsItemSelected(item);
+    }
 }

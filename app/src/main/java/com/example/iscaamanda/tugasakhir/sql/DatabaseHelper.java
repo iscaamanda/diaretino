@@ -76,14 +76,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //logika mengecek username dan password
-    public boolean checkUser(String userName){
+    public boolean checkUser(String userName, String userPassword){
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = COLUMN_USER_NAME + " = ?" ;
-//        + COLUMN_USER_PASSWORD + " = ?";
-        String[] selectionArgs = { userName };
+        String selection = COLUMN_USER_NAME + " = ?" + " AND " + COLUMN_USER_PASSWORD + " =?";
+        String[] selectionArgs = { userName, userPassword };
 
         Cursor cursor =db.query(TABLE_USER,
                 columns,
@@ -93,7 +92,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null,
                 null);
         int cursorCount = cursor.getCount();
-
         cursor.close();
         db.close();
 

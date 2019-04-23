@@ -94,8 +94,7 @@ public class AuthActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if (databaseHelper.checkUser(textInputEditTextUserName.getText().toString().trim())){
-//          textInputEditTextUserPass.getText().toString().trim())){
+        if (databaseHelper.checkUser(textInputEditTextUserName.getText().toString().trim(),textInputEditTextUserPass.getText().toString().trim())){
             session.setLoggedIn(true);
             Intent accountsIntent = new Intent(activity, MainActivity.class);
             accountsIntent.putExtra("userName",textInputEditTextUserName.getText().toString().trim());

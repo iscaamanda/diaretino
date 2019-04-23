@@ -35,14 +35,5 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:srcCompat="@drawable/ic_add_black_48" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/button_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/fab_margin"
-        android:tint="@color/colorText"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:srcCompat="@drawable/ic_add_black_48" />
 
 </android.support.design.widget.CoordinatorLayout>
