@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorText"
+    android:background="#efefef"
     android:id="@+id/settings_view"
-    tools:context=".AuthActivity"
     >
     <!-- Here you put the rest of your current view-->
 
@@ -21,11 +20,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:padding="10dp"
-            android:text="Pengaturan"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:font="@font/helvetica_neue_bold"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:padding="20dp"
+            android:text="Profil"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="normal" />
 
@@ -33,54 +33,58 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="100">
+
             <TextView
                 android:id="@+id/institusi_nama_judul"
-                android:text="Institusi"
-                android:gravity="center"
-                android:textAlignment="center"
                 android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"/>
+                android:fontFamily="@font/helvetica_neue_bold"
+                android:gravity="center"
+                android:text="Institusi"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/institusi_nama"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:elevation="5dp"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:background="@drawable/radiustransp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:fontFamily="@font/helvetica_neue_medium"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="100">
+
             <TextView
                 android:id="@+id/institusi_alamat_nama"
-                android:text="Alamat"
-                android:gravity="center"
-                android:textAlignment="center"
                 android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"/>
+                android:fontFamily="@font/helvetica_neue_bold"
+                android:gravity="center"
+                android:text="Alamat"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/institusi_alamat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:elevation="5dp"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:background="@drawable/radiustransp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:fontFamily="@font/helvetica_neue_medium"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

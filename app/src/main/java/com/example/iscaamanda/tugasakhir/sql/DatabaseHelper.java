@@ -13,6 +13,7 @@ import static android.content.ContentValues.TAG;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    public static final String TAG = DatabaseHelper.class.getSimpleName();
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "UserManager.db";
 
@@ -39,7 +40,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_INSTITUTION + " TEXT,"
             + COLUMN_ADDRESS + " TEXT" + ")";
 
-    private  String DROP_USER_TABLE = "DROP TABLE IF EXISTS" + TABLE_USER;
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DROP_USER_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(db);
     }
 
@@ -101,4 +101,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public User query(String userName){
+//        String query = "SELECT * FROM " + TABLE_USER +
+//                " ORDER BY " + COLUMN_USER_ID + " ASC " +
+//                "LIMIT " + rownumber + ",1";
+
+        String query = "select * from " + TABLE_USER + " where " +
+                COLUMN_USER_NAME + " = " + "'"+userName+"'";
+
+        User user = new User();
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        //move to first row
+        cursor.moveToFirst();
+
+        user.setUserName(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME)));
+        user.setUserPass(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
+        user.setInstitution(cursor.getString(cursor.getColumnIndex(COLUMN_INSTITUTION)));
+        user.setAddress(cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS)));
+
+
+        cursor.close();
+        db.close();
+
+        return user;
+    }
 }

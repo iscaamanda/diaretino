@@ -18,6 +18,8 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,6 +32,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.iscaamanda.tugasakhir.helper.InputValidation;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -60,19 +64,28 @@ public class CreateNew extends AppCompatActivity {
     private static final String TAG = "CreateNew";
 
     //deklarasi variabel
-    EditText firstName;
-    EditText lastName;
-    EditText patientId;
+    TextInputEditText patientId;
+    TextInputEditText firstName;
+    TextInputEditText lastName;
+    private TextInputEditText addBirthday;
+    private DatePickerDialog.OnDateSetListener addBirthDateSetListener;
+    private TextInputEditText addDate;
+    private DatePickerDialog.OnDateSetListener addDateSetListener;
+
+    TextInputLayout patientIdLayout;
+    TextInputLayout firstNameLayout;
+    TextInputLayout lastNameLayout;
+    TextInputLayout addBirthdayLayout;
+    TextInputLayout addDateLayout;
+
     RadioGroup radioGroup;
     RadioButton radioButton;
     String pathToFile;
     ImageView imageView;
     Uri photoURI;
-    private EditText addBirthday;
-    private DatePickerDialog.OnDateSetListener addBirthDateSetListener;
-    private EditText addDate;
-    private DatePickerDialog.OnDateSetListener addDateSetListener;
+
     Button buttonNew;
+    private InputValidation inputValidation;
 
     //PRESETS FOR CLASSIFICATION
 
@@ -99,8 +112,8 @@ public class CreateNew extends AppCompatActivity {
     private String classifier;
 
     // input image dimensions for the MobileNet Model
-    private int DIM_IMG_SIZE_X = 224;
-    private int DIM_IMG_SIZE_Y = 224;
+    private int DIM_IMG_SIZE_X = 299;
+    private int DIM_IMG_SIZE_Y = 299;
     private int DIM_PIXEL_SIZE = 3;
 
     // int array to hold image data
@@ -123,7 +136,7 @@ public class CreateNew extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         intValues = new int[DIM_IMG_SIZE_Y*DIM_IMG_SIZE_X];
-        classifier = "eyemessidor3_graph.lite";
+        classifier = "ta-inceptionv3-2ary-4-test30.lite";
 
 
         super.onCreate(savedInstanceState);
@@ -132,8 +145,17 @@ public class CreateNew extends AppCompatActivity {
         firstName = findViewById(R.id.first_name);
         lastName = findViewById(R.id.last_name);
         patientId = findViewById(R.id.patient_id);
+
+        patientIdLayout = findViewById(R.id.patient_id_layout);
+        firstNameLayout = findViewById(R.id.first_name_layout);
+        lastNameLayout = findViewById(R.id.last_name_layout);
+
         addBirthday = findViewById(R.id.add_birthday);
         addDate = findViewById(R.id.add_date);
+
+        addBirthdayLayout = findViewById(R.id.add_birthday_layout);
+        addDateLayout = findViewById(R.id.add_date_layout);
+
         radioGroup = findViewById(R.id.radio_group);
         buttonNew = findViewById(R.id.bNew);
 
@@ -231,12 +253,30 @@ public class CreateNew extends AppCompatActivity {
             public void onClick(View v) {
                 //TODO: open camera
 
-                dispatchPictureTakerAction();
-
-
+                inputValidation = new InputValidation(CreateNew.this);
                 int radioId = radioGroup.getCheckedRadioButtonId();
+
+                if(!inputValidation.isInputEditTextFilled(patientId,
+                        patientIdLayout, getString(R.string.error_field_required))){
+                    return;
+                }if(!inputValidation.isInputEditTextFilled(firstName,
+                        firstNameLayout, getString(R.string.error_field_required))){
+                    return;
+                }if(!inputValidation.isInputEditTextFilled(lastName,
+                        lastNameLayout, getString(R.string.error_field_required))){
+                    return;
+                }if(!inputValidation.isInputEditTextFilled(addBirthday,
+                        addBirthdayLayout, getString(R.string.error_field_required))){
+                    return;
+                }if(!inputValidation.isInputEditTextFilled(addDate,
+                        addDateLayout, getString(R.string.error_field_required))){
+                    return;
+                }if (radioGroup.getCheckedRadioButtonId() == -1) {
+                    getString(R.string.error_field_required);
+                }else{
                 radioButton = findViewById(radioId);
                 eyePosition = radioButton.getText().toString();
+                dispatchPictureTakerAction();
                 imageLoc = photoURI.toString();
                 String imageLabel = topLables[0];
                 String imageConfidence = topConfidence[0];
@@ -252,7 +292,7 @@ public class CreateNew extends AppCompatActivity {
 //                        topConfidence[0]);
 //                db.patientDao().insertAll(patient);
 //                startActivity(new Intent(CreateNew.this, MainActivity.class));
-            }
+            }}
         });
 
     }
@@ -270,7 +310,6 @@ public class CreateNew extends AppCompatActivity {
         if (takePic.resolveActivity(getPackageManager()) != null){
            File photoFile = null;
            photoFile = createPhotoFile();
-
            if (photoFile!=null){
                String pathToFile = photoFile.getAbsolutePath();
                photoURI = FileProvider.getUriForFile(CreateNew.this,"com.example.iscaamanda.tugasakhir.fileprovider", photoFile);
@@ -315,6 +354,7 @@ public class CreateNew extends AppCompatActivity {
                    } catch (IOException e) {
                        e.printStackTrace();
                    }
+//                   photo = cropToSquare(photo);
                    imageClassifier(photo);
 
                 final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "datapasien")
@@ -401,7 +441,7 @@ public class CreateNew extends AppCompatActivity {
     private List<String> loadLabelList() throws IOException {
         List<String> labelList = new ArrayList<String>();
         BufferedReader reader =
-                new BufferedReader(new InputStreamReader(this.getAssets().open("eyemessidor3_labels.txt")));
+                new BufferedReader(new InputStreamReader(this.getAssets().open("ta-inceptionv3-2ary-4-test30.txt")));
         String line;
         while ((line = reader.readLine()) != null) {
             labelList.add(line);
@@ -410,5 +450,17 @@ public class CreateNew extends AppCompatActivity {
         return labelList;
     }
 
+//    public static Bitmap cropToSquare(Bitmap bitmap){
+//        int width  = bitmap.getWidth();
+//        int height = bitmap.getHeight();
+//        int newWidth = (height > width) ? width : height;
+//        int newHeight = (height > width)? height - ( height - width) : height;
+//        int cropW = (width - height) / 2;
+//        cropW = (cropW < 0)? 0: cropW;
+//        int cropH = (height - width) / 2;
+//        cropH = (cropH < 0)? 0: cropH;
+//        Bitmap cropImg = Bitmap.createBitmap(bitmap, cropW, cropH, newWidth, newHeight);
+//        return cropImg;
+//    }
 
 }

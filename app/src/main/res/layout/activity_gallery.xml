@@ -2,6 +2,7 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    android:background="#efefef"
     android:layout_height="fill_parent">
     <!-- Here you put the rest of your current view-->
 
@@ -14,14 +15,14 @@
     android:layout_marginHorizontal="20dp"> //membuat persentase layar 100%
 
 
-
     <ImageView
         android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="224dp"
-        android:scaleType="centerCrop"
-        android:elevation="10dp"
+        android:layout_width="299dp"
+        android:layout_height="299dp"
         android:layout_marginVertical="20dp"
+        android:elevation="10dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"
         android:src="@mipmap/ic_launcher" />
 
 
@@ -35,25 +36,26 @@
 
         <TextView
             android:id="@+id/patient_id_name"
-            android:text="ID Pasien"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="ID Pasien"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/patient_id"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID Pasien"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
-            android:elevation="5dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
             android:background="@drawable/radiustransp"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="ID Pasien"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -65,26 +67,27 @@
 
         <TextView
             android:id="@+id/image_label_name"
-            android:text="Kelas"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Kelas"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/image_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Kelas"
-            android:textStyle="bold"
-            android:background="@drawable/radiustransp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:elevation="5dp"
-            android:textSize="14sp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:background="@drawable/radiustransp"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Kelas"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -92,28 +95,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="100">
+
         <TextView
             android:id="@+id/image_confidence_name"
-            android:text="Akurasi"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Akurasi"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/image_confidence"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Akurasi"
-            android:textStyle="bold"
-            android:background="@drawable/radiustransp"
-            android:elevation="5dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:textSize="14sp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:background="@drawable/radiustransp"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Akurasi"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
 
@@ -121,151 +126,149 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="100">
+
         <TextView
             android:id="@+id/first_name_name"
-            android:text="Nama Depan"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Nama Depan"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/first_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Nama Depan"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:background="@drawable/radiustransp"
-            android:elevation="5dp"
             android:layout_margin="5dp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:background="@drawable/radiustransp"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Nama Depan"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="100">
+
         <TextView
             android:id="@+id/last_name_name"
-            android:text="Nama Belakang"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:elevation="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Nama Belakang"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
 
         <TextView
             android:id="@+id/last_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nama Belakang"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:background="@drawable/radiustransp"
-            android:elevation="10dp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Nama Belakang"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="100">
+
         <TextView
             android:id="@+id/add_birthday_name"
-            android:text="Tanggal Lahir"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Tanggal Lahir"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/add_birthday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tanggal Lahir"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:background="@drawable/radiustransp"
-            android:elevation="5dp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Tanggal Lahir"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="100">
+
         <TextView
             android:id="@+id/add_date_name"
-            android:text="Tanggal Ambil"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Tanggal Ambil"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/add_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tanggal Ambil"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:background="@drawable/radiustransp"
-            android:elevation="5dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Tanggal Ambil"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="100">
+
         <TextView
             android:id="@+id/eye_position_name"
-            android:text="Posisi Mata"
-            android:gravity="center"
-            android:textAlignment="center"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/helvetica_neue_bold"
+            android:gravity="center"
+            android:text="Posisi Mata"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/eye_position"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Posisi Mata"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:elevation="5dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
             android:background="@drawable/radiustransp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="Posisi Mata"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
-
-
-
-
-
-
     </LinearLayout>
-
 
 </android.support.v4.widget.NestedScrollView>

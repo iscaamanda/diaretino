@@ -15,6 +15,43 @@ public class Session {
         editor = preferences.edit();
     }
 
+    public String getUsername(){
+        String username = preferences.getString("username","");
+        return  username;
+    }
+
+    public void setUsername(String username){
+        preferences.edit().putString("username", username).apply();
+    }
+
+    public String getUserpass(){
+        String userpass = preferences.getString("userpass","");
+        return  userpass;
+    }
+
+    public void setUserpass(String userpass){
+        preferences.edit().putString("userpass", userpass).apply();
+    }
+
+    public String getInstitution(){
+        String institution = preferences.getString("institution","");
+        return  institution;
+    }
+
+    public void setInstitution(String institution){
+        preferences.edit().putString("institution", institution).apply();
+    }
+
+    public String getAddress(){
+        String address = preferences.getString("address","");
+        return  address;
+    }
+
+    public void setAddress(String address){
+        preferences.edit().putString("address", address).apply();
+    }
+
+
     public void setLoggedIn(boolean loggedIn){
         editor.putBoolean("loggedInmode", loggedIn);
         editor.commit();

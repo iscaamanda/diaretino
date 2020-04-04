@@ -1,6 +1,8 @@
 package com.example.iscaamanda.tugasakhir.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private int userId;
     private String userName;

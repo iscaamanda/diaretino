@@ -1,16 +1,14 @@
 package com.example.iscaamanda.tugasakhir;
 
-import android.arch.persistence.room.Database;
+
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -38,6 +36,8 @@ public class AuthActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
+
+        session = new Session(this);
 
         initViews();
         initListeners();
@@ -96,10 +96,17 @@ public class AuthActivity extends AppCompatActivity implements View.OnClickListe
 
         if (databaseHelper.checkUser(textInputEditTextUserName.getText().toString().trim(),textInputEditTextUserPass.getText().toString().trim())){
             session.setLoggedIn(true);
-            Intent accountsIntent = new Intent(activity, MainActivity.class);
-            accountsIntent.putExtra("userName",textInputEditTextUserName.getText().toString().trim());
-            emptyInputEditText();
-            startActivity(accountsIntent);
+            User user = databaseHelper.query(textInputEditTextUserName.getText().toString().trim());
+            session.setUsername(user.getUserName());
+            session.setUserpass(user.getUserPass());
+            session.setInstitution(user.getInstitution());
+            session.setAddress(user.getAddress());
+//            Intent accountsIntent = new Intent(activity, MainActivity.class);
+//            accountsIntent.putExtra("userName",textInputEditTextUserName.getText().toString().trim());
+//            emptyInputEditText();
+//            startActivity(accountsIntent);
+            startActivity(new Intent(AuthActivity.this, MainActivity.class));
+            finish();
         }else{
             Snackbar.make(scrollView,getString(R.string.error_invalid_username_userpass), Snackbar.LENGTH_LONG).show();
         }

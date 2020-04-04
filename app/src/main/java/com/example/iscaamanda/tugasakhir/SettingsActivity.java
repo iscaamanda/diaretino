@@ -1,5 +1,6 @@
 package com.example.iscaamanda.tugasakhir;
 
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,25 +8,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+
+import com.example.iscaamanda.tugasakhir.sql.DatabaseHelper;
+
 public class SettingsActivity extends AppCompatActivity {
 
     private TextView institutionName;
     private TextView institutionAddress;
-
+    private  Session session;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        session = new Session(this);
+//        User user = databaseHelper.query(textInputEditTextUserName.getText().toString().trim());
+//        session.setUsername(user.getUserName());
+//
+
         institutionName = findViewById(R.id.institusi_nama);
         institutionAddress = findViewById(R.id.institusi_alamat);
 
-        String intentInstitution = getIntent().getStringExtra("institution");
-        String intentAddress = getIntent().getStringExtra("address");
+//        String intentInstitution = getIntent().getStringExtra("institution");
+//        String intentAddress = getIntent().getStringExtra("address");
+//        institutionName.setText(intentInstitution);
+//        institutionAddress.setText(intentAddress);
 
-        institutionName.setText(intentInstitution);
-        institutionAddress.setText(intentAddress);
+        institutionName.setText(session.getInstitution());
+        institutionAddress.setText(session.getAddress());
+
+
     }
 
     @Override

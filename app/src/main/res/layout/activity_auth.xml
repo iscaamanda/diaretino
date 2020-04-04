@@ -2,10 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorText"
-    android:id="@+id/scroll_view"
+    android:background="#efefef"
     tools:context=".AuthActivity">
     <!-- Here you put the rest of your current view-->
 
@@ -18,81 +18,72 @@
 
         <ImageView
             android:id="@+id/logoDiaretino"
-            android:layout_width="222dp"
-            android:layout_height="127dp"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_diaretino72p" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:padding="10dp"
-            android:text="diaretino"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            android:layout_marginBottom="20dp"
-            android:textStyle="normal" />
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/logo_baru" />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginHorizontal="10dp"
-            android:id="@+id/layout_username"
-            android:background="@drawable/radiustransp"
-            android:elevation="10dp">
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/radiustransp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue_medium"
                 android:hint="Username"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:singleLine="true"
-                android:textSize="14sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimary" />
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout_userpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:passwordToggleEnabled="true"
-            android:id="@+id/layout_userpass"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/radiustransp"
-            android:elevation="10dp">
+            app:passwordToggleEnabled="true">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/input_userpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue_medium"
                 android:hint="Password"
-                android:textSize="14sp"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimary" />
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
 
 
         <Button
             android:id="@+id/button_auth"
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
+            android:layout_height="33dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
-            android:text="Masuk"
-            android:elevation="10dp"
             android:background="@drawable/radius"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Masuk"
+            android:textAllCaps="false"
+            style="?android:attr/borderlessButtonStyle"
             android:textColor="@color/ic_launcher_background"
             android:textSize="14sp" />
 
